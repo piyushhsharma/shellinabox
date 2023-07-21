@@ -1,0 +1,25 @@
+rhel 7 ami : ami-0aa6ff0d8fcf3c812
+    1 yum repolist
+    2  yum install shellinabox
+    3  yum installhttps://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    4  yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    5  yum install shellinabox -y
+    6  systemctl start shellinaboxd
+    7  netstat -tnlp
+    8  vi /etc/sysconfig/shellinaboxd
+change : 
+OPTS="--disable-ssl-menu-s/:LOGIN" to 
+
+coreect : 
+OPTS="--disable-ssl-menu-s/:SSH"
+
+    9  systemctl restart shellinaboxd
+   10  useradd test1
+   11  passwd test1
+   12  vi /etc/ssh/sshd_config
+change: 
+password authenticationn yes
+   
+   13 systemctl restart sshd
+
+https://public_ip:4200 (port number)
